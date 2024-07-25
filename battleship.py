@@ -509,7 +509,6 @@ def BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 #////////////////////////////////////////////////////////////////(Player Shoot and Computer Shoot Funtion)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     
 def Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn):
-  print("this is a print message just for you Optimus")  
   while True:
         if turn == 0:
             shot = (f" {chr(random.randint(65, 65 + row_list - 1) )}{random.randint(1,col_list)}").strip().replace(",", "")
@@ -528,16 +527,16 @@ def Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn)
             print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
             print (shot)
 
-    # generate shot coordinates
-    #example: ord('B') - ord('A') gives 66 - 65 = 1
-    row = ord(shot[0].upper()) - ord('A')
-    #shot[1] = int value | number value
-    col = int(shot[1:]) - 1
+        # generate shot coordinates
+        #example: ord('B') - ord('A') gives 66 - 65 = 1
+        row = ord(shot[0].upper()) - ord('A')
+        #shot[1] = int value | number value
+        col = int(shot[1:]) - 1
 
-    X = "x"
-    computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
-    computerCoordGrid[row][col] = X
-    return (computerDisplayGrid, computerCoordGrid, X)
+        X = "x"
+        computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
+        computerCoordGrid[row][col] = X
+        return (computerDisplayGrid, computerCoordGrid, X)
 #//////////////////////////////////////////////////////////////////(User Turn and Computer Turn Function)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
 # Gianna
 # Function for computer to place ships
@@ -698,12 +697,12 @@ def main():
         BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
         
         # asks and defines orientation for 2x1 ship
-        orientation = input(f"Choose your ship orientation for {playerShip1_name} (v for vertical, h for horizontal)").strip()
+        orientation = input(f"Choose your ship orientation for {playerShip1_name} (v for vertical, h for horizontal): ").strip()
         while True:
             if orientation != "h" and orientation != "v" :
                 os.system('cls' if os.name == 'nt' else 'clear')
                 BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
-                orientation = input(f"Choose your ship orientation(v for vertical, h for horizontal)").strip()
+                orientation = input(f"Choose your ship orientation(v for vertical, h for horizontal): ").strip()
             else:
                 break
         while True:
