@@ -508,7 +508,7 @@ def BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 
 #////////////////////////////////////////////////////////////////(Player Shoot and Computer Shoot Funtion)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     
-def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
+def Shoot_Guess(Grid, col_list, row_list,turn):
   
   while True:
         
@@ -530,7 +530,7 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
         #ensures length of character is atleast 2 | checks if first character is valid and within range | ensures character is digit *valid column number coverts & into int
         
         elif len(shot) >= 2 and shot[0].upper() in [chr(65 + i) for i in range(row_list)] and shot[1:].isdigit() and int(shot[1:]) <= col_list:
-            break
+            print("")
 
         else:
 
@@ -543,9 +543,15 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
         #shot[1] = int value | number value
         col = int(shot[1:]) - 1
 
-        X = "x"
-        computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
-        return (computerDisplayGrid, X)
+        if Grid[row][col] == "x":
+            print("\nYou have already shot that location.\n")
+            continue
+
+        X = Fore.LIGHTYELLOW_EX + "x" + Fore.RESET
+        Grid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
+        Grid[row][col] = X
+        return (Grid, X)
+        
   
 #//////////////////////////////////////////////////////////////////(User Turn and Computer Turn Function)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
 # Gianna
@@ -578,8 +584,8 @@ def main():
 
 #///////////////////////////////////////////////////////////////////////////(Inputs For Grid Creation and Intitializing Grids)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     print(Fore.WHITE+"Create Your Grid:")
-    col_list = 10
-    row_list = 10
+    col_list = 3
+    row_list = 3
     turn = 0
     # Gianna
     # Initialize grids
@@ -842,6 +848,10 @@ def main():
             random_num1 = random.randint(0, row_list - 1)
             random_num2 = random.randint(0, col_list - 1)
 
+    intercept = chr(random_num1 + 65)
+    print(intercept)
+    print(random_num2)
+
     # Alternates turns between the computer and the player
     while True:
 
@@ -858,7 +868,7 @@ def main():
                 Shoot_Guess(playerDisplayGrid, col_list, row_list,turn)
                 BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 
-                if playerDisplayGrid[row1][col1] == playerDisplayGrid[row2][col2] == playerDisplayGrid[row3][col3] == playerDisplayGrid[row4][col4] == "x":
+                if playerDisplayGrid[row1][col1] and playerDisplayGrid[row2][col2] and playerDisplayGrid[row3][col3] and playerDisplayGrid[row4][col4] == "x":
 
                     print("The computer sunk both your ships! Better luck next time.")
                     win_animation(turn)
@@ -870,15 +880,15 @@ def main():
 
                     print(f"The computer hit your ship, {playerShip1_name}!")
 
-                if playerDisplayGrid[row2][col2] == "x":
+                elif playerDisplayGrid[row2][col2] == "x":
 
                     print(f"The computer hit your ship, {playerShip1_name}!")
 
-                if playerDisplayGrid[row3][col3] == "x":
+                elif playerDisplayGrid[row3][col3] == "x":
 
                     print(f"The computer hit your ship, {playerShip2_name}!")
 
-                if playerDisplayGrid[row4][col4] == "x":
+                elif playerDisplayGrid[row4][col4] == "x":
 
                     print(f"The computer hit your ship, {playerShip2_name}!")
 
@@ -886,13 +896,13 @@ def main():
 
                     print(f"The computer sunk your ship, {playerShip1_name}!")
 
-                if playerDisplayGrid[row3][col3] and playerDisplayGrid[row4][col4] == "x":
+                elif playerDisplayGrid[row3][col3] and playerDisplayGrid[row4][col4] == "x":
 
                     print(f"The computer sunk your ship, {playerShip2_name}!")
 
                 else:
 
-                    print("The computer missed!")
+                    print("\nThe computer missed!")
 
                 t=5
 
@@ -919,7 +929,6 @@ def main():
             if computerDisplayGrid[random_num1][random_num2] != "x":
 
                 shipAnimation_hit_miss(0)
-
             # Check if player hits ship 1 or ship 2
 
             if computerDisplayGrid[random_num1][random_num2] == "x":
