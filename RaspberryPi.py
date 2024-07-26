@@ -509,7 +509,7 @@ def BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 #////////////////////////////////////////////////////////////////(Player Shoot and Computer Shoot Funtion)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     
 def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
-  print("cHECKPOINT 1")
+  print("checkPOINT 1: ")
   while True:
         
         if turn == 0:
@@ -531,7 +531,7 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
         
         
         elif len(shot) >= 2 and shot[0].upper() in [chr(65 + i) for i in range(row_list)] and shot[1:].isdigit() and int(shot[1:]) <= col_list:
-            print("CheckPOINT 2: ")
+            print()
             
 
         else:
@@ -539,7 +539,8 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
             print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
             print (shot)
 
-        print("CHECKPOINT 3!")
+
+        print("CHECKPOINT 2: ")
         # generate shot coordinates
         #example: ord('B') - ord('A') gives 66 - 65 = 1
         row = ord(shot[0].upper()) - ord('A')
@@ -548,8 +549,9 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
 
         X = "x"
         computerDisplayGrid[row][col] = (f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}")
+        computerDisplayGrid[row][col] = X
+        #### print obaord
         print("Guess: ",   computerDisplayGrid[row][col])
-        print("ijnqerivnojenvwiojrg")
         return (computerDisplayGrid, X)
   
 #//////////////////////////////////////////////////////////////////(User Turn and Computer Turn Function)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
@@ -583,8 +585,8 @@ def main():
 
 #///////////////////////////////////////////////////////////////////////////(Inputs For Grid Creation and Intitializing Grids)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     print(Fore.WHITE+"Create Your Grid:")
-    col_list = 10
-    row_list = 10
+    col_list = 3
+    row_list = 3
     turn = 0
     # Gianna
     # Initialize grids
@@ -847,19 +849,21 @@ def main():
             random_num1 = random.randint(0, row_list - 1)
             random_num2 = random.randint(0, col_list - 1)
 
-    print("computer ships: ", computerShips)
+
+    
     # Alternates turns between the computer and the player
     while True:
-
+        
         turn=0
 
         if turn == 0:
-
+                
                 # prints list of ships and coords for testing
 
                 # for x, y in computerShips.items():
                 #     print(f"- {x}, {y}")
-
+                print("computer ships: ", computerShips)
+                
                 print("\nComputer objective: Sink The Player's Ships\n")
                 Shoot_Guess(playerDisplayGrid, col_list, row_list,turn)
                 BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
@@ -904,11 +908,11 @@ def main():
 
                 t=5
 
-                while t > 0:
-
-                    print(f"{Fore.WHITE}Player moves in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
-                    time.sleep(1)  # wait for 1 second
-                    t -= 1
+                # while t > 0:
+                placeholder = input("Press enter to continue to PLAYERS turn: ")
+                #     print(f"{Fore.WHITE}Player moves in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+                #     time.sleep(1)  # wait for 1 second
+                #     t -= 1
 
                 os.system('cls' if os.name == 'nt' else 'clear')
 
