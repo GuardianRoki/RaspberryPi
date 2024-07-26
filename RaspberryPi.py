@@ -509,17 +509,17 @@ def BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 #////////////////////////////////////////////////////////////////(Player Shoot and Computer Shoot Funtion)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     
 def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
-  
+  print("cHECKPOINT 1")
   while True:
         
         if turn == 0:
-
+            ### computer turns to shoot
             shot = (f" {chr(random.randint(65, 65 + row_list - 1) )}{random.randint(1,col_list)}").strip().replace(",", "")
-
+            print("Computers shot: ", shot)
         else:
 
             shot = input(f"Where do you want to shoot (A-{chr(65 + row_list - 1)},1-{col_list})? ").strip().replace(",", "")
-            
+            print("User shot: ")
         # .lower is case insinstive 
 
         if shot.lower() == "quit":
@@ -529,14 +529,17 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
 
         #ensures length of character is atleast 2 | checks if first character is valid and within range | ensures character is digit *valid column number coverts & into int
         
+        
         elif len(shot) >= 2 and shot[0].upper() in [chr(65 + i) for i in range(row_list)] and shot[1:].isdigit() and int(shot[1:]) <= col_list:
-            break
+            print("CheckPOINT 2: ")
+            
 
         else:
 
             print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
             print (shot)
 
+        print("CHECKPOINT 3!")
         # generate shot coordinates
         #example: ord('B') - ord('A') gives 66 - 65 = 1
         row = ord(shot[0].upper()) - ord('A')
@@ -544,7 +547,9 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
         col = int(shot[1:]) - 1
 
         X = "x"
-        computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
+        computerDisplayGrid[row][col] = (f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}")
+        print("Guess: ",   computerDisplayGrid[row][col])
+        print("ijnqerivnojenvwiojrg")
         return (computerDisplayGrid, X)
   
 #//////////////////////////////////////////////////////////////////(User Turn and Computer Turn Function)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
@@ -842,6 +847,7 @@ def main():
             random_num1 = random.randint(0, row_list - 1)
             random_num2 = random.randint(0, col_list - 1)
 
+    print("computer ships: ", computerShips)
     # Alternates turns between the computer and the player
     while True:
 
@@ -864,7 +870,9 @@ def main():
                     win_animation(turn)
                     
                 # Check if player hits ship 1 or ship 2
+                
                 print("\nMove Log:")
+                
 
                 if playerDisplayGrid[row1][col1] == "x":
 
