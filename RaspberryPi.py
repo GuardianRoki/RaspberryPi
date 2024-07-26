@@ -508,18 +508,23 @@ def BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 
 #////////////////////////////////////////////////////////////////(Player Shoot and Computer Shoot Funtion)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     
+<<<<<<< HEAD
 def Shoot_Guess(Grid, col_list, row_list,turn):
   
+=======
+def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
+  print("checkPOINT 1: ")
+>>>>>>> fb32ef970db80037abdf555ed2b75b667e6e97c8
   while True:
         
         if turn == 0:
-
+            ### computer turns to shoot
             shot = (f" {chr(random.randint(65, 65 + row_list - 1) )}{random.randint(1,col_list)}").strip().replace(",", "")
-
+            print("Computers shot: ", shot)
         else:
 
             shot = input(f"Where do you want to shoot (A-{chr(65 + row_list - 1)},1-{col_list})? ").strip().replace(",", "")
-            
+            print("User shot: ")
         # .lower is case insinstive 
 
         if shot.lower() == "quit":
@@ -529,20 +534,29 @@ def Shoot_Guess(Grid, col_list, row_list,turn):
 
         #ensures length of character is atleast 2 | checks if first character is valid and within range | ensures character is digit *valid column number coverts & into int
         
+        
         elif len(shot) >= 2 and shot[0].upper() in [chr(65 + i) for i in range(row_list)] and shot[1:].isdigit() and int(shot[1:]) <= col_list:
+<<<<<<< HEAD
             print("")
+=======
+            print()
+            
+>>>>>>> fb32ef970db80037abdf555ed2b75b667e6e97c8
 
         else:
 
             print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
             print (shot)
 
+
+        print("CHECKPOINT 2: ")
         # generate shot coordinates
         #example: ord('B') - ord('A') gives 66 - 65 = 1
         row = ord(shot[0].upper()) - ord('A')
         #shot[1] = int value | number value
         col = int(shot[1:]) - 1
 
+<<<<<<< HEAD
         if Grid[row][col] == "x":
             print("\nYou have already shot that location.\n")
             continue
@@ -552,6 +566,14 @@ def Shoot_Guess(Grid, col_list, row_list,turn):
         Grid[row][col] = X
         return (Grid, X)
         
+=======
+        X = "x"
+        computerDisplayGrid[row][col] = (f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}")
+        computerDisplayGrid[row][col] = X
+        #### print obaord
+        print("Guess: ",   computerDisplayGrid[row][col])
+        return (computerDisplayGrid, X)
+>>>>>>> fb32ef970db80037abdf555ed2b75b667e6e97c8
   
 #//////////////////////////////////////////////////////////////////(User Turn and Computer Turn Function)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
 # Gianna
@@ -848,22 +870,28 @@ def main():
             random_num1 = random.randint(0, row_list - 1)
             random_num2 = random.randint(0, col_list - 1)
 
+<<<<<<< HEAD
     intercept = chr(random_num1 + 65)
     print(intercept)
     print(random_num2)
 
+=======
+
+    
+>>>>>>> fb32ef970db80037abdf555ed2b75b667e6e97c8
     # Alternates turns between the computer and the player
     while True:
-
+        
         turn=0
 
         if turn == 0:
-
+                
                 # prints list of ships and coords for testing
 
                 # for x, y in computerShips.items():
                 #     print(f"- {x}, {y}")
-
+                print("computer ships: ", computerShips)
+                
                 print("\nComputer objective: Sink The Player's Ships\n")
                 Shoot_Guess(playerDisplayGrid, col_list, row_list,turn)
                 BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
@@ -874,7 +902,9 @@ def main():
                     win_animation(turn)
                     
                 # Check if player hits ship 1 or ship 2
+                
                 print("\nMove Log:")
+                
 
                 if playerDisplayGrid[row1][col1] == "x":
 
@@ -906,11 +936,11 @@ def main():
 
                 t=5
 
-                while t > 0:
-
-                    print(f"{Fore.WHITE}Player moves in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
-                    time.sleep(1)  # wait for 1 second
-                    t -= 1
+                # while t > 0:
+                placeholder = input("Press enter to continue to PLAYERS turn: ")
+                #     print(f"{Fore.WHITE}Player moves in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+                #     time.sleep(1)  # wait for 1 second
+                #     t -= 1
 
                 os.system('cls' if os.name == 'nt' else 'clear')
 
