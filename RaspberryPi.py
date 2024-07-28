@@ -519,7 +519,7 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
         else:
 
             shot = input(f"Where do you want to shoot (A-{chr(65 + row_list - 1)},1-{col_list})? ").strip().replace(",", "")
-            print("User shot: ")
+            print("User shot: ", shot)
         # .lower is case insinstive 
 
         if shot.lower() == "quit":
@@ -548,9 +548,9 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
         col = int(shot[1:]) - 1
 
         X = "x"
-        computerDisplayGrid[row][col] = (f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}")
+        
         computerDisplayGrid[row][col] = X
-        #### print obaord
+        # computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
         print("Guess: ",   computerDisplayGrid[row][col])
         return (computerDisplayGrid, X)
   
@@ -837,8 +837,7 @@ def main():
     random_num1 = random.randint(0, row_list - 1)
     random_num2 = random.randint(0, col_list - 1)
 
-    computerShips.update({computerShip1_name: [f"First Coord: ({random_num1}, {random_num2})"]})
-
+   
     while True:
 
         if random_num1 != row1 and random_num2 != row2 and random_num2 != col1 and random_num2 != col2:
@@ -848,6 +847,9 @@ def main():
 
             random_num1 = random.randint(0, row_list - 1)
             random_num2 = random.randint(0, col_list - 1)
+
+    computerShips.update({computerShip1_name: [f"First Coord: ({chr(random_num1 + 65)}, {random_num2 + 1})"]})
+
 
 
     
