@@ -840,7 +840,7 @@ def main():
    
     while True:
 
-        if random_num1 != row1 and random_num2 != row2 and random_num2 != col1 and random_num2 != col2:
+        if random_num1 != row1 and random_num1 != row2 and random_num2 != col1 and random_num2 != col2:
             break
 
         else:
@@ -848,7 +848,38 @@ def main():
             random_num1 = random.randint(0, row_list - 1)
             random_num2 = random.randint(0, col_list - 1)
 
-    computerShips.update({computerShip1_name: [f"First Coord: ({chr(random_num1 + 65)}, {random_num2 + 1})"]})
+
+    direction = random.randint(0,1)
+
+    if direction == 0:
+
+        second_cord1 = random_num1 + 1
+        second_cord2 = random_num2
+    else:
+
+        second_cord1 = random_num1
+        second_cord2 = random_num2 + 1
+
+    while True:
+
+        if second_cord1 != row1 and second_cord1 != row2 and second_cord2 != col1 and second_cord2 != col2:
+            break
+
+        else:
+            direction = random.randint(0,1)
+
+            if direction == 0:
+
+                second_cord1 = random_num1 + 1
+                second_cord2 = random_num2
+            else:
+
+                second_cord1 = random_num1
+                second_cord2 = random_num2 + 1
+           
+        
+
+    computerShips.update({computerShip1_name: [f"First Cord: ({chr(random_num1 + 65)}, {random_num2 + 1})  Second Cord: ({chr(second_cord1 + 65)}, {second_cord2 + 1})"]})
 
 
 
@@ -934,9 +965,9 @@ def main():
 
                 shipAnimation_hit_miss(0)
 
-            # Check if player hits ship 1 or ship 2
+           
 
-            if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
+            if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[second_cord1][second_cord2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
 
                 shipAnimation_hit_miss(1)
                 print("You sunk the Computer's ship! You WIN!")
@@ -952,6 +983,12 @@ def main():
                 main()
                 
                 os.system('cls' if os.name == 'nt' else 'clear')
+
+            if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
+
+                shipAnimation_hit_miss(1)
+               
+                
 
         os.system('cls' if os.name == 'nt' else 'clear')  
         
