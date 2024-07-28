@@ -550,7 +550,7 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
         X = "x"
         
         computerDisplayGrid[row][col] = X
-        # computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
+        computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
         print("Guess: ",   computerDisplayGrid[row][col])
         return (computerDisplayGrid, X)
   
@@ -585,8 +585,8 @@ def main():
 
 #///////////////////////////////////////////////////////////////////////////(Inputs For Grid Creation and Intitializing Grids)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     print(Fore.WHITE+"Create Your Grid:")
-    col_list = 3
-    row_list = 3
+    col_list = 10
+    row_list = 10
     turn = 0
     # Gianna
     # Initialize grids
@@ -930,13 +930,13 @@ def main():
             BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
             Shoot_Guess(computerDisplayGrid, col_list, row_list,turn)
 
-            if computerDisplayGrid[random_num1][random_num2] != "x":
+            if computerDisplayGrid[random_num1][random_num2] != f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
 
                 shipAnimation_hit_miss(0)
 
             # Check if player hits ship 1 or ship 2
 
-            if computerDisplayGrid[random_num1][random_num2] == "x":
+            if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
 
                 shipAnimation_hit_miss(1)
                 print("You sunk the Computer's ship! You WIN!")
