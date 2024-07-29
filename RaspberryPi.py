@@ -931,7 +931,6 @@ while game_repeat == True:
         
 
     computerShips.update({computerShip2_name: [f"First Cord: ({chr(random_num3 + 65)}, {random_num4 + 1})  Second Cord: ({chr(second_cord3 + 65)}, {second_cord4 + 1})"]})
-
     
     # Alternates turns between the computer and the player
     while True:
@@ -1018,7 +1017,7 @@ while game_repeat == True:
 
                 shipAnimation_hit_miss(0)
 
-            if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[second_cord1][second_cord2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[random_num3][random_num4] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[second_cord3][second_cord4] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
+            if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[second_cord1][second_cord2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[random_num3][random_num4] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[second_cord3][second_cord4] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}": 
 
                 shipAnimation_hit_miss(1)
                 print("You sunk the Computer's ship! You WIN!")
