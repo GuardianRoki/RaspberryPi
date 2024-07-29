@@ -2,6 +2,7 @@ import random
 import os
 from colorama import init, Fore, Style
 import time
+import sys
 
 ####################################################(Animations)############################################################### 
 #V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V 
@@ -562,7 +563,8 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
 #vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv#
 
 #/////////////////////////////////////////////////////////////////////(^^^^^Title Screen Prompt *Rules and Title of Game^^^^^)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
-def main():
+game_repeat = True
+while game_repeat == True:
     os.system('cls' if os.name == 'nt' else 'clear')
     print(Fore.WHITE +"Welcome to Battleship!")
 
@@ -980,9 +982,9 @@ def main():
                     time.sleep(1)  # wait for 1 second
                     t -= 1
 
-                main()
-                
                 os.system('cls' if os.name == 'nt' else 'clear')
+
+                os.execl(sys.executable, sys.executable, *sys.argv)()
 
             if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
 
@@ -996,4 +998,4 @@ def main():
 #///////////////////////////////////////////////////////////////////////////(Calling The Game() Funtion)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#        
 # Entire functioning program: 206 lines
 # (Lines w/out animations)        
-main()
+
