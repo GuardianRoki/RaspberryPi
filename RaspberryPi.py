@@ -548,10 +548,19 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
         #shot[1] = int value | number value
         col = int(shot[1:]) - 1
 
+
+        cordsList = [row, col]
         X = "x"
         
-        computerDisplayGrid[row][col] = X
-        computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
+
+        print("cord list: ", cordsList)
+        print([random_num1 , random_num2 ])
+
+
+        if cordsList == [random_num1, random_num2 ] or cordsList == [second_cord1, second_cord2 ] or cordsList == [random_num3, random_num4 ] or cordsList == [second_cord3, second_cord4 ]:
+            computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
+        else:
+            computerDisplayGrid[row][col] = f"{Fore.BLUE}{X}{Fore.BLUE}"
         print("Guess: ",   computerDisplayGrid[row][col])
         return (computerDisplayGrid, X)
   
