@@ -518,9 +518,15 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
             shot = (f" {chr(random.randint(65, 65 + row_list - 1) )}{random.randint(1,col_list)}").strip().replace(",", "")
             print("Computers shot: ", shot)
         else:
+           
+           repeat = True
+           while repeat:
+                shot = input(f"Where do you want to shoot (A-{chr(65 + row_list - 1)},1-{col_list})? ").strip().replace(",", "")
+                print("User shot: ", shot)
+                if shot != "":
+                    repeat = False
 
-            shot = input(f"Where do you want to shoot (A-{chr(65 + row_list - 1)},1-{col_list})? ").strip().replace(",", "")
-            print("User shot: ", shot)
+          
         # .lower is case insinstive 
 
         if shot.lower() == "quit":
@@ -845,6 +851,7 @@ while game_repeat == True:
     stop2 = True
     stop3 = True
     stop4 = True
+    
 
     computerShips = {}
 
@@ -868,13 +875,19 @@ while game_repeat == True:
     direction = random.randint(0,1)
 
     if direction == 0:
-
         second_cord1 = random_num1 + 1
         second_cord2 = random_num2
+
+        if second_cord1 > row_list :
+            second_cord1 -= 2
+
     else:
 
         second_cord1 = random_num1
         second_cord2 = random_num2 + 1
+
+        if second_cord2 > col_list:
+            second_cord2 -= 2
 
     while True:
 
@@ -888,10 +901,14 @@ while game_repeat == True:
 
                 second_cord1 = random_num1 + 1
                 second_cord2 = random_num2
+                if second_cord1 > row_list :
+                    second_cord1 -= 2
             else:
 
                 second_cord1 = random_num1
                 second_cord2 = random_num2 + 1
+                if second_cord2 > col_list:
+                    second_cord2 -= 2
            
         
 
@@ -920,10 +937,17 @@ while game_repeat == True:
 
         second_cord3 = random_num3 + 1
         second_cord4 = random_num4
+
+        if second_cord3 > row_list:
+            second_cord3 -= 2
+
     else:
 
         second_cord3 = random_num3
         second_cord4 = random_num4 + 1
+
+        if second_cord4 > col_list:
+            second_cord4 -= 2
 
     while True:
 
@@ -937,10 +961,17 @@ while game_repeat == True:
 
                 second_cord3 = random_num3 + 1
                 second_cord4 = random_num4
+
+                if second_cord3 > row_list:
+                    second_cord3 -= 2
+
             else:
 
                 second_cord3 = random_num3
                 second_cord4 = random_num4 + 1
+
+                if second_cord4 > col_list:
+                    second_cord4 -= 2
            
         
 
