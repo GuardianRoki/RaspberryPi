@@ -883,8 +883,54 @@ while game_repeat == True:
 
     computerShips.update({computerShip1_name: [f"First Cord: ({chr(random_num1 + 65)}, {random_num2 + 1})  Second Cord: ({chr(second_cord1 + 65)}, {second_cord2 + 1})"]})
 
+    computerShip2_name = input("\nName the computer's second ship: ")
+
+    random_num3 = random.randint(0, row_list - 1)
+    random_num4 = random.randint(0, col_list - 1)
+
+   
+    while True:
+
+        if random_num3 != row1 and random_num3 != row2 and random_num4 != col1 and random_num4 != col2:
+            break
+        elif random_num3 != random_num1 and random_num4 != random_num2:
+            break
+        else:
+            random_num3 = random.randint(0, row_list - 1)
+            random_num4 = random.randint(0, col_list - 1)
 
 
+    direction = random.randint(0,1)
+
+    if direction == 0:
+
+        second_cord3 = random_num3 + 1
+        second_cord4 = random_num4
+    else:
+
+        second_cord3 = random_num3
+        second_cord4 = random_num4 + 1
+
+    while True:
+
+        if second_cord3 != row1 and second_cord3 != row2 and second_cord4 != col1 and second_cord4 != col2:
+            break
+
+        else:
+            direction = random.randint(0,1)
+
+            if direction == 0:
+
+                second_cord3 = random_num3 + 1
+                second_cord4 = random_num4
+            else:
+
+                second_cord3 = random_num3
+                second_cord4 = random_num4 + 1
+           
+        
+
+    computerShips.update({computerShip2_name: [f"First Cord: ({chr(random_num3 + 65)}, {random_num4 + 1})  Second Cord: ({chr(second_cord3 + 65)}, {second_cord4 + 1})"]})
     
     # Alternates turns between the computer and the player
     while True:
@@ -967,9 +1013,11 @@ while game_repeat == True:
 
                 shipAnimation_hit_miss(0)
 
-           
+            elif computerDisplayGrid[random_num3][random_num4] != f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
 
-            if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[second_cord1][second_cord2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
+                shipAnimation_hit_miss(0)
+
+            if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[second_cord1][second_cord2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[random_num3][random_num4] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[second_cord3][second_cord4] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}": 
 
                 shipAnimation_hit_miss(1)
                 print("You sunk the Computer's ship! You WIN!")
@@ -998,4 +1046,3 @@ while game_repeat == True:
 #///////////////////////////////////////////////////////////////////////////(Calling The Game() Funtion)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#        
 # Entire functioning program: 206 lines
 # (Lines w/out animations)        
-
