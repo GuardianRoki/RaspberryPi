@@ -2,6 +2,7 @@ import random
 import os
 from colorama import init, Fore, Style
 import time
+import sys
 
 ####################################################(Animations)############################################################### 
 #V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V 
@@ -508,13 +509,8 @@ def BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 
 #////////////////////////////////////////////////////////////////(Player Shoot and Computer Shoot Funtion)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     
-<<<<<<< HEAD
-def Shoot_Guess(Grid, col_list, row_list,turn):
-  
-=======
 def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
   print("checkPOINT 1: ")
->>>>>>> fb32ef970db80037abdf555ed2b75b667e6e97c8
   while True:
         
         if turn == 0:
@@ -524,7 +520,7 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
         else:
 
             shot = input(f"Where do you want to shoot (A-{chr(65 + row_list - 1)},1-{col_list})? ").strip().replace(",", "")
-            print("User shot: ")
+            print("User shot: ", shot)
         # .lower is case insinstive 
 
         if shot.lower() == "quit":
@@ -536,12 +532,8 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
         
         
         elif len(shot) >= 2 and shot[0].upper() in [chr(65 + i) for i in range(row_list)] and shot[1:].isdigit() and int(shot[1:]) <= col_list:
-<<<<<<< HEAD
-            print("")
-=======
             print()
             
->>>>>>> fb32ef970db80037abdf555ed2b75b667e6e97c8
 
         else:
 
@@ -556,24 +548,12 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
         #shot[1] = int value | number value
         col = int(shot[1:]) - 1
 
-<<<<<<< HEAD
-        if Grid[row][col] == "x":
-            print("\nYou have already shot that location.\n")
-            continue
-
-        X = Fore.LIGHTYELLOW_EX + "x" + Fore.RESET
-        Grid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
-        Grid[row][col] = X
-        return (Grid, X)
-        
-=======
         X = "x"
-        computerDisplayGrid[row][col] = (f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}")
+        
         computerDisplayGrid[row][col] = X
-        #### print obaord
+        computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
         print("Guess: ",   computerDisplayGrid[row][col])
         return (computerDisplayGrid, X)
->>>>>>> fb32ef970db80037abdf555ed2b75b667e6e97c8
   
 #//////////////////////////////////////////////////////////////////(User Turn and Computer Turn Function)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
 # Gianna
@@ -583,7 +563,8 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
 #vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv#
 
 #/////////////////////////////////////////////////////////////////////(^^^^^Title Screen Prompt *Rules and Title of Game^^^^^)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
-def main():
+game_repeat = True
+while game_repeat == True:
     os.system('cls' if os.name == 'nt' else 'clear')
     print(Fore.WHITE +"Welcome to Battleship!")
 
@@ -606,8 +587,8 @@ def main():
 
 #///////////////////////////////////////////////////////////////////////////(Inputs For Grid Creation and Intitializing Grids)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     print(Fore.WHITE+"Create Your Grid:")
-    col_list = 3
-    row_list = 3
+    col_list = 10
+    row_list = 10
     turn = 0
     # Gianna
     # Initialize grids
@@ -858,11 +839,10 @@ def main():
     random_num1 = random.randint(0, row_list - 1)
     random_num2 = random.randint(0, col_list - 1)
 
-    computerShips.update({computerShip1_name: [f"First Coord: ({random_num1}, {random_num2})"]})
-
+   
     while True:
 
-        if random_num1 != row1 and random_num2 != row2 and random_num2 != col1 and random_num2 != col2:
+        if random_num1 != row1 and random_num1 != row2 and random_num2 != col1 and random_num2 != col2:
             break
 
         else:
@@ -870,15 +850,89 @@ def main():
             random_num1 = random.randint(0, row_list - 1)
             random_num2 = random.randint(0, col_list - 1)
 
-<<<<<<< HEAD
-    intercept = chr(random_num1 + 65)
-    print(intercept)
-    print(random_num2)
 
-=======
+    direction = random.randint(0,1)
+
+    if direction == 0:
+
+        second_cord1 = random_num1 + 1
+        second_cord2 = random_num2
+    else:
+
+        second_cord1 = random_num1
+        second_cord2 = random_num2 + 1
+
+    while True:
+
+        if second_cord1 != row1 and second_cord1 != row2 and second_cord2 != col1 and second_cord2 != col2:
+            break
+
+        else:
+            direction = random.randint(0,1)
+
+            if direction == 0:
+
+                second_cord1 = random_num1 + 1
+                second_cord2 = random_num2
+            else:
+
+                second_cord1 = random_num1
+                second_cord2 = random_num2 + 1
+           
+        
+
+    computerShips.update({computerShip1_name: [f"First Cord: ({chr(random_num1 + 65)}, {random_num2 + 1})  Second Cord: ({chr(second_cord1 + 65)}, {second_cord2 + 1})"]})
+
+    computerShip2_name = input("\nName the computer's second ship: ")
+
+    random_num3 = random.randint(0, row_list - 1)
+    random_num4 = random.randint(0, col_list - 1)
+
+   
+    while True:
+
+        if random_num3 != row1 and random_num3 != row2 and random_num4 != col1 and random_num4 != col2:
+            break
+        elif random_num3 != random_num1 and random_num4 != random_num2:
+            break
+        else:
+            random_num3 = random.randint(0, row_list - 1)
+            random_num4 = random.randint(0, col_list - 1)
+
+
+    direction = random.randint(0,1)
+
+    if direction == 0:
+
+        second_cord3 = random_num3 + 1
+        second_cord4 = random_num4
+    else:
+
+        second_cord3 = random_num3
+        second_cord4 = random_num4 + 1
+
+    while True:
+
+        if second_cord3 != row1 and second_cord3 != row2 and second_cord4 != col1 and second_cord4 != col2:
+            break
+
+        else:
+            direction = random.randint(0,1)
+
+            if direction == 0:
+
+                second_cord3 = random_num3 + 1
+                second_cord4 = random_num4
+            else:
+
+                second_cord3 = random_num3
+                second_cord4 = random_num4 + 1
+           
+        
+
+    computerShips.update({computerShip2_name: [f"First Cord: ({chr(random_num3 + 65)}, {random_num4 + 1})  Second Cord: ({chr(second_cord3 + 65)}, {second_cord4 + 1})"]})
 
     
->>>>>>> fb32ef970db80037abdf555ed2b75b667e6e97c8
     # Alternates turns between the computer and the player
     while True:
         
@@ -896,7 +950,7 @@ def main():
                 Shoot_Guess(playerDisplayGrid, col_list, row_list,turn)
                 BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 
-                if playerDisplayGrid[row1][col1] and playerDisplayGrid[row2][col2] and playerDisplayGrid[row3][col3] and playerDisplayGrid[row4][col4] == "x":
+                if playerDisplayGrid[row1][col1] == playerDisplayGrid[row2][col2] == playerDisplayGrid[row3][col3] == playerDisplayGrid[row4][col4] == "x":
 
                     print("The computer sunk both your ships! Better luck next time.")
                     win_animation(turn)
@@ -910,15 +964,15 @@ def main():
 
                     print(f"The computer hit your ship, {playerShip1_name}!")
 
-                elif playerDisplayGrid[row2][col2] == "x":
+                if playerDisplayGrid[row2][col2] == "x":
 
                     print(f"The computer hit your ship, {playerShip1_name}!")
 
-                elif playerDisplayGrid[row3][col3] == "x":
+                if playerDisplayGrid[row3][col3] == "x":
 
                     print(f"The computer hit your ship, {playerShip2_name}!")
 
-                elif playerDisplayGrid[row4][col4] == "x":
+                if playerDisplayGrid[row4][col4] == "x":
 
                     print(f"The computer hit your ship, {playerShip2_name}!")
 
@@ -926,13 +980,13 @@ def main():
 
                     print(f"The computer sunk your ship, {playerShip1_name}!")
 
-                elif playerDisplayGrid[row3][col3] and playerDisplayGrid[row4][col4] == "x":
+                if playerDisplayGrid[row3][col3] and playerDisplayGrid[row4][col4] == "x":
 
                     print(f"The computer sunk your ship, {playerShip2_name}!")
 
                 else:
 
-                    print("\nThe computer missed!")
+                    print("The computer missed!")
 
                 t=5
 
@@ -956,12 +1010,15 @@ def main():
             BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
             Shoot_Guess(computerDisplayGrid, col_list, row_list,turn)
 
-            if computerDisplayGrid[random_num1][random_num2] != "x":
+            if computerDisplayGrid[random_num1][random_num2] != f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
 
                 shipAnimation_hit_miss(0)
-            # Check if player hits ship 1 or ship 2
 
-            if computerDisplayGrid[random_num1][random_num2] == "x":
+            elif computerDisplayGrid[random_num3][random_num4] != f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
+
+                shipAnimation_hit_miss(0)
+
+            if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[second_cord1][second_cord2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[random_num3][random_num4] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[second_cord3][second_cord4] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
 
                 shipAnimation_hit_miss(1)
                 print("You sunk the Computer's ship! You WIN!")
@@ -974,9 +1031,15 @@ def main():
                     time.sleep(1)  # wait for 1 second
                     t -= 1
 
-                main()
-                
                 os.system('cls' if os.name == 'nt' else 'clear')
+
+                os.execl(sys.executable, sys.executable, *sys.argv)()
+
+            if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
+
+                shipAnimation_hit_miss(1)
+               
+                
 
         os.system('cls' if os.name == 'nt' else 'clear')  
         
@@ -984,4 +1047,3 @@ def main():
 #///////////////////////////////////////////////////////////////////////////(Calling The Game() Funtion)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#        
 # Entire functioning program: 206 lines
 # (Lines w/out animations)        
-main()
