@@ -1033,15 +1033,8 @@ while game_repeat == True:
                 win_animation(turn)
                 t=10
 
-                while t > 0:
-
-                    print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end = " seconds.\r")  # display minutes and seconds
-                    time.sleep(1)  # wait for 1 second
-                    t -= 1
-
-                os.system('cls' if os.name == 'nt' else 'clear')
-
-                os.execl(sys.executable, sys.executable, *sys.argv)()
+                placeholder = ("Press enter to exit: ")
+                quit()
 
             miss_num = 0
 
