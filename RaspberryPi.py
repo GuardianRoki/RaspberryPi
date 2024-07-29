@@ -832,6 +832,11 @@ while game_repeat == True:
 #///////////////////////////////////////////////////////////////////////////(Inputs For Computer Ship Placement)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#   
     # Initialize ship positions for computer randomly
 
+    stop1 = True
+    stop2 = True
+    stop3 = True
+    stop4 = True
+
     computerShips = {}
 
     computerShip1_name = input("\nName the computer's first ship: ")
@@ -1029,29 +1034,31 @@ while game_repeat == True:
 
                 os.execl(sys.executable, sys.executable, *sys.argv)()
 
-            stop1 = True
-            stop2 = True
-            stop3 = True
-            stop4 = True
+            miss_num = 0
 
             if stop1 == True:
                 if computerDisplayGrid[random_num1][random_num2] == (f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}"):
                     shipAnimation_hit_miss(1)
                     stop1 = False
+                    miss_num += 1
             if stop2 == True:
                 if computerDisplayGrid[random_num3][random_num4] == (f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}"):
                     shipAnimation_hit_miss(1)
                     stop2 = False
+                    miss_num += 1
+
             if stop3 == True:
                 if computerDisplayGrid[second_cord1][second_cord2] == (f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}"):
                     shipAnimation_hit_miss(1)
                     stop3 = False
+                    miss_num += 1
             if stop4 == True:
                 if computerDisplayGrid[second_cord3][second_cord4] == (f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}"):
                     shipAnimation_hit_miss(1)
                     stop4 = False
-
-            else:
+                    miss_num += 1
+                    
+            if miss_num == 0:
                 shipAnimation_hit_miss(0)
                 
                 
