@@ -1009,13 +1009,8 @@ while game_repeat == True:
             BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
             Shoot_Guess(computerDisplayGrid, col_list, row_list,turn)
 
-            if computerDisplayGrid[random_num1][random_num2] != f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
 
-                shipAnimation_hit_miss(0)
-
-            elif computerDisplayGrid[random_num3][random_num4] != f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
-
-                shipAnimation_hit_miss(0)
+            
 
             if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[second_cord1][second_cord2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[random_num3][random_num4] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}" and computerDisplayGrid[second_cord3][second_cord4] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}": 
 
@@ -1034,10 +1029,31 @@ while game_repeat == True:
 
                 os.execl(sys.executable, sys.executable, *sys.argv)()
 
-            if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
+            stop1 = True
+            stop2 = True
+            stop3 = True
+            stop4 = True
 
-                shipAnimation_hit_miss(1)
-               
+            if stop1 == True:
+                if computerDisplayGrid[random_num1][random_num2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
+                    shipAnimation_hit_miss(1)
+                    stop1 = False
+            if stop2 == True:
+                if computerDisplayGrid[random_num3][random_num4] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
+                    shipAnimation_hit_miss(1)
+                    stop2 = False
+            if stop3 == True:
+                if computerDisplayGrid[second_cord1][second_cord2] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
+                    shipAnimation_hit_miss(1)
+                    stop3 = False
+            if stop4 == True:
+                if computerDisplayGrid[second_cord3][second_cord4] == f"{Fore.LIGHTYELLOW_EX}{"x"}{Fore.BLUE}":
+                    shipAnimation_hit_miss(1)
+                    stop4 = False
+
+            else:
+                shipAnimation_hit_miss(0)
+                
                 
 
         os.system('cls' if os.name == 'nt' else 'clear')  
