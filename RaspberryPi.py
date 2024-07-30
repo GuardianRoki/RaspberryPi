@@ -564,9 +564,9 @@ def Shoot_Guess(computerDisplayGrid, col_list, row_list,turn):
 
 
         if cordsList == [random_num1, random_num2 ] or cordsList == [second_cord1, second_cord2 ] or cordsList == [random_num3, random_num4 ] or cordsList == [second_cord3, second_cord4 ]:
-            computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
+            computerDisplayGrid[row][col] = (Fore.LIGHTYELLOW_EX + "x" + Fore.BLUE)
         else:
-            computerDisplayGrid[row][col] = f"{Fore.BLUE}{X}{Fore.BLUE}"
+            computerDisplayGrid[row][col] = (Fore.BLUE + "x" + Fore.BLUE)
         print("Guess: ",   computerDisplayGrid[row][col])
         return (computerDisplayGrid, X)
   
@@ -1057,7 +1057,7 @@ while game_repeat == True:
 
             
 
-            if computerDisplayGrid[random_num1][random_num2] == "x" and computerDisplayGrid[second_cord1][second_cord2] == "x" and computerDisplayGrid[random_num3][random_num4] == "x" and computerDisplayGrid[second_cord3][second_cord4] == "x": 
+            if computerDisplayGrid[random_num1][random_num2] == (Fore.LIGHTYELLOW_EX + "x" + Fore.BLUE) and computerDisplayGrid[second_cord1][second_cord2] == (Fore.LIGHTYELLOW_EX + "x" + Fore.BLUE) and computerDisplayGrid[random_num3][random_num4] == (Fore.LIGHTYELLOW_EX + "x" + Fore.BLUE) and computerDisplayGrid[second_cord3][second_cord4] == (Fore.LIGHTYELLOW_EX + "x" + Fore.BLUE): 
 
                 shipAnimation_hit_miss(1)
                 print("You sunk the Computer's ship! You WIN!")
@@ -1070,23 +1070,23 @@ while game_repeat == True:
             miss_num = 0
 
             if stop1 == True:
-                if computerDisplayGrid[random_num1][random_num2] == "x":
+                if computerDisplayGrid[random_num1][random_num2] == (Fore.LIGHTYELLOW_EX + "x" + Fore.BLUE):
                     shipAnimation_hit_miss(1)
                     stop1 = False
                     miss_num += 1
             if stop2 == True:
-                if computerDisplayGrid[random_num3][random_num4] == "x":
+                if computerDisplayGrid[random_num3][random_num4] == (Fore.LIGHTYELLOW_EX + "x" + Fore.BLUE):
                     shipAnimation_hit_miss(1)
                     stop2 = False
                     miss_num += 1
 
             if stop3 == True:
-                if computerDisplayGrid[second_cord1][second_cord2] == "x":
+                if computerDisplayGrid[second_cord1][second_cord2] == (Fore.LIGHTYELLOW_EX + "x" + Fore.BLUE):
                     shipAnimation_hit_miss(1)
                     stop3 = False
                     miss_num += 1
             if stop4 == True:
-                if computerDisplayGrid[second_cord3][second_cord4] == "x":
+                if computerDisplayGrid[second_cord3][second_cord4] == (Fore.LIGHTYELLOW_EX + "x" + Fore.BLUE):
                     shipAnimation_hit_miss(1)
                     stop4 = False
                     miss_num += 1
